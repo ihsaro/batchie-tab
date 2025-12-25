@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 namespace BatchieTab.Cli.Engines;
 
-public class ChromeEngine : IBrowserEngine
+public class ChromeEngine : IEngine
 {
     public void Open(IEnumerable<string> urls)
     {

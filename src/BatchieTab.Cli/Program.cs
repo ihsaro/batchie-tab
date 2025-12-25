@@ -7,8 +7,9 @@ using Microsoft.Extensions.Hosting;
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((_, services) =>
     {
-        services.AddKeyedTransient<IBrowserEngine, ChromeEngine>(EngineType.Chrome);
-        services.AddKeyedTransient<IBrowserEngine, FirefoxEngine>(EngineType.Firefox);
+        services.AddKeyedTransient<IEngine, ChromeEngine>(EngineType.Chrome);
+        services.AddKeyedTransient<IEngine, ChromiumEngine>(EngineType.Chromium);
+        services.AddKeyedTransient<IEngine, FirefoxEngine>(EngineType.Firefox);
         services.AddTransient<Entry>();
     })
     .Build();

@@ -1,6 +1,6 @@
 namespace BatchieTab.Cli.Engines;
 
-public interface IBrowserEngine
+public interface IEngine
 {
     void Open(IEnumerable<string> urls);
     void OpenIncognito(IEnumerable<string> urls);
