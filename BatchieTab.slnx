@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BatchieTab.Cli/BatchieTab.Cli.csproj" />
+  </Folder>
+</Solution>
