@@ -76,8 +76,8 @@ public class Entry(IServiceProvider serviceProvider)
             Console.WriteLine($"File '{path}' not found.");
             return;
         }
-
-        var engine = serviceProvider.GetRequiredKeyedService<IEngine>(browser);
+        
+        var engine = serviceProvider.GetRequiredKeyedService<IEngine>("macos-chrome");
 
         if (args.Contains("--incognito"))
         {
