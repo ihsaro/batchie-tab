@@ -1,28 +1,15 @@
-using System.Diagnostics;
-
 namespace BatchieTab.Cli.Engines;
 
 public class MacosChromiumEngine : IEngine
 {
     public void Open(IEnumerable<string> urls)
     {
-        var args = "--new-window " + string.Join(" ", urls.Select(u => $"\"{u}\""));
-        StartProcess(args);        
+        throw new NotImplementedException();
     }
 
     public void OpenIncognito(IEnumerable<string> urls)
     {
-        var args = "--new-window --incognito " + string.Join(" ", urls.Select(u => $"\"{u}\""));
-        StartProcess(args);
-    }
 
-    private static void StartProcess(string args)
-    {
-        Process.Start(new ProcessStartInfo
-        {
-            FileName = "chromium",
-            Arguments = args,
-            UseShellExecute = true
-        });
+        throw new NotImplementedException();
     }
 }

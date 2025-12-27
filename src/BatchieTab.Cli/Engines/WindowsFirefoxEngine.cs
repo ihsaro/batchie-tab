@@ -1,6 +1,6 @@
 namespace BatchieTab.Cli.Engines;
 
-public class MacosFirefoxEngine : IEngine
+public class WindowsFirefoxEngine : IEngine
 {
     public void Open(IEnumerable<string> urls)
     {

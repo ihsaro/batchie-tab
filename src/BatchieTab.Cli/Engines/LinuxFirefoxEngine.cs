@@ -2,19 +2,28 @@ using System.Diagnostics;
 
 namespace BatchieTab.Cli.Engines;
 
+/*
+ * TODO
+ * Fix issue in Open, whereby it opens in 2 windows: n - 1 urls in a window and 1 url in another window.
+ * Fix issue is OpenIncognito, where it opens n - 1 urls but 1 random url is not opened, but instead is opened in a new tab in the same incognito window. 
+ */
 public class LinuxFirefoxEngine : IEngine
 {
     public void Open(IEnumerable<string> urls)
     {
-        
+        var args = "--new-window " + string.Join(" ", urls.Select(u => $"\"{u}\""));
+
+        StartProcess(args);
     }
 
     public void OpenIncognito(IEnumerable<string> urls)
     {
-        var args = "-private-window " + string.Join(" ", urls.Select(u => $"\"{u}\""));
-        StartProcess(args);
+        foreach (var url in urls)
+        {
+            StartProcess($"--no-remote -private-window \"{url}\"");
+        }
     }
-    
+
     private static void StartProcess(string args)
     {
         Process.Start(new ProcessStartInfo

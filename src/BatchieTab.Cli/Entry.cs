@@ -16,6 +16,8 @@ public class Entry(IServiceProvider serviceProvider)
         
         List<string> urls = [];
 
+        var os = OperatingSystemHelper.GetOperatingSystem();
+
         if (args.Length > 0)
         {
             if (args.Contains(PathArgumentName))
@@ -77,7 +79,7 @@ public class Entry(IServiceProvider serviceProvider)
             return;
         }
         
-        var engine = serviceProvider.GetRequiredKeyedService<IEngine>("macos-chrome");
+        var engine = serviceProvider.GetRequiredKeyedService<IEngine>($"{os}-{browser}");
 
         if (args.Contains("--incognito"))
         {
