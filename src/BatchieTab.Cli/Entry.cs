@@ -1,5 +1,6 @@
 using BatchieTab.Cli.Domain;
 using BatchieTab.Cli.Engines;
+using BatchieTab.Cli.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BatchieTab.Cli;
