@@ -15,8 +15,8 @@ BatchieTab is a cross-platform CLI tool that opens multiple URLs in your browser
 
 ### Arguments
 
-- --path
-- --browser
+- --path <path-to-file>
+- --browser <browser-name> (possible values : chrome, chromium, firefox)
 - --incognito
 
 ### Usage examples
@@ -28,17 +28,17 @@ BatchieTab is a cross-platform CLI tool that opens multiple URLs in your browser
 
 ### Implementation status
 
-| Operating system | Browser               | Status  |
-|------------------|-----------------------|---------|
-| Linux            | Brave                 | ❌      |
-| Linux            | Chromium              | ❌      |
-| Linux            | Firefox               | ⚠️      |
-| Linux            | Google chrome         | ✅      |
-| Macos            | Brave                 | ❌      |
-| Macos            | Chromium              | ❌      |
-| Macos            | Firefox               | ❌      |
-| Macos            | Google chrome         | ✅      |
-| Windows          | Brave                 | ❌      |
-| Windows          | Chromium              | ❌      |
-| Windows          | Firefox               | ❌      |
-| Windows          | Google chrome         | ❌      |
+| Operating system | Browser               | Status             |
+|------------------|-----------------------|--------------------|
+| Linux            | Brave                 | :x:                |
+| Linux            | Chromium              | :x:                |
+| Linux            | Firefox               | :warning:          |
+| Linux            | Google chrome         | :white_check_mark: |
+| Macos            | Brave                 | :x:                |
+| Macos            | Chromium              | :x:                |
+| Macos            | Firefox               | :x:                |
+| Macos            | Google chrome         | :white_check_mark: |
+| Windows          | Brave                 | :x:                |
+| Windows          | Chromium              | :x:                |
+| Windows          | Firefox               | :x:                |
+| Windows          | Google chrome         | :x:                |
