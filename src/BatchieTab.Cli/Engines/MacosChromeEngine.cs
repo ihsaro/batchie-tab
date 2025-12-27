@@ -5,30 +5,44 @@ namespace BatchieTab.Cli.Engines;
 public class MacosChromeEngine : IEngine
 {
     public void Open(IEnumerable<string> urls)
-    {
-        var args = BuildArgs("--new-window", urls);
-        StartProcess(args);
-    }
+        => StartProcess(urls, incognito: false);
 
     public void OpenIncognito(IEnumerable<string> urls)
-    {
-        var args = BuildArgs("--new-window --incognito", urls);
-        StartProcess(args);
-    }
+        => StartProcess(urls, incognito: true);
 
-    private static string BuildArgs(string chromeArgs, IEnumerable<string> urls)
+    private static void StartProcess(IEnumerable<string> urls, bool incognito)
     {
-        var urlArgs = string.Join(" ", urls.Select(u => $"\"{u}\""));
-        return $"-a \"Google Chrome\" --args {chromeArgs} {urlArgs}";
-    }
+        var urlList = string.Join(", ", urls.Select(u => $"\"{u}\""));
 
-    private static void StartProcess(string args)
-    {
+        var script = incognito
+            ? $@"
+tell application ""Google Chrome""
+    activate
+    set w to make new window with properties {{mode:""incognito""}}
+    repeat with u in {{{urlList}}}
+        make new tab at end of tabs of w with properties {{URL:u}}
+    end repeat
+end tell"
+            : $@"
+tell application ""Google Chrome""
+    activate
+    set w to make new window
+    repeat with u in {{{urlList}}}
+        make new tab at end of tabs of w with properties {{URL:u}}
+    end repeat
+end tell";
+
         Process.Start(new ProcessStartInfo
         {
-            FileName = "open",
-            Arguments = args,
-            UseShellExecute = true
+            FileName = "osascript",
+            Arguments = $"-e {Escape(script)}",
+            UseShellExecute = false
         });
     }
+
+    private static string Escape(string script)
+    {
+        return $"\"{script.Replace("\"", "\\\"")}\"";
+    }
+
 }

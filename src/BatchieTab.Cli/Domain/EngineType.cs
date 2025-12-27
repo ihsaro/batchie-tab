@@ -2,9 +2,9 @@ namespace BatchieTab.Cli.Domain;
 
 public static class EngineType
 {
-    public static string Chrome => "chrome";
-    public static string Chromium => "chromium";
-    public static string Firefox => "firefox";
+    public const string Chrome = "chrome";
+    public const string Chromium = "chromium";
+    public const string Firefox = "firefox";
     
     private static readonly HashSet<string> All =
     [
