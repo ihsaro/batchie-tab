@@ -25,6 +25,10 @@ public class MacosBrowserPlatformAdapter : IBrowserPlatformAdapter
             {
                 "/Applications/Firefox.app"
             },
+            EngineType.Safari => new[]
+            {
+                "/Applications/Safari.app"
+            },
             _ => Array.Empty<string>()
         };
 
