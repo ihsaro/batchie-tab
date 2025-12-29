@@ -20,9 +20,10 @@ public class LinuxChromeEngine : IEngine
     {
         Process.Start(new ProcessStartInfo
         {
-            FileName = "google-chrome",
-            Arguments = args,
-            UseShellExecute = true
+            FileName = "bash",
+            Arguments = $"-c \"google-chrome {args} >/dev/null 2>&1 &\"",
+            UseShellExecute = false,
+            CreateNoWindow = true
         });
     }
 }

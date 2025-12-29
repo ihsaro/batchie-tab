@@ -20,9 +20,10 @@ public class LinuxChromiumEngine : IEngine
     {
         Process.Start(new ProcessStartInfo
         {
-            FileName = "chromium",
-            Arguments = args,
-            UseShellExecute = true
+            FileName = "bash",
+            Arguments = $"-c \"chromium-browser {args} >/dev/null 2>&1 &\"",
+            UseShellExecute = false,
+            CreateNoWindow = true
         });
     }
 }
