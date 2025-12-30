@@ -41,7 +41,7 @@ public class Entry(IServiceProvider serviceProvider)
 
                     if (!EngineType.IsValid(browser))
                     {
-                        Console.WriteLine($"Invalid {BrowserArgumentName} value, possible values are: {EngineType.Chrome}, {EngineType.Chromium}, {EngineType.Firefox}, {EngineType.Safari}");
+                        Console.WriteLine($"Invalid {BrowserArgumentName} value, possible values are: {EngineType.Brave}, {EngineType.Chrome}, {EngineType.Chromium}, {EngineType.Firefox}, {EngineType.Safari}");
                         return;
                     }
                     if (!EngineHelper.IsBrowserInstalled(browser))
@@ -57,7 +57,7 @@ public class Entry(IServiceProvider serviceProvider)
 
                 if (defaultBrowser is null)
                 {
-                    Console.WriteLine($"Unsupported default browser, accepted browsers are: {EngineType.Chrome}, {EngineType.Chromium}, {EngineType.Firefox}, {EngineType.Safari}");
+                    Console.WriteLine($"Unsupported default browser, accepted browsers are: {EngineType.Brave}, {EngineType.Chrome}, {EngineType.Chromium}, {EngineType.Firefox}, {EngineType.Safari}");
                     return;
                 }
 
