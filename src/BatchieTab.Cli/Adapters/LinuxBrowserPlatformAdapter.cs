@@ -28,6 +28,11 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
             {
                 "firefox"
             },
+            EngineType.Brave => new[]
+            {
+                "brave-browser",
+                "brave"
+            },
             _ => Array.Empty<string>()
         };
 
@@ -42,6 +47,7 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
             EngineType.Chrome => new[] { "google-chrome" },
             EngineType.Chromium => new[] { "chromium" },
             EngineType.Firefox => new[] { "firefox" },
+            EngineType.Brave => new[] { "brave" },
             _ => Array.Empty<string>()
         };
 
@@ -56,6 +62,7 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
             EngineType.Chrome => new[] { "com.google.Chrome" },
             EngineType.Chromium => new[] { "org.chromium.Chromium" },
             EngineType.Firefox => new[] { "org.mozilla.firefox" },
+            EngineType.Brave => new[] { "com.brave.Browser" },
             _ => Array.Empty<string>()
         };
 
@@ -67,7 +74,7 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
 
         return false;
     }
-    
+
     private static bool RunCommand(string fileName, string arguments)
     {
         try
