@@ -29,6 +29,14 @@ public class MacosBrowserPlatformAdapter : IBrowserPlatformAdapter
             {
                 "/Applications/Safari.app"
             },
+            EngineType.Edge => new[]
+            {
+                "/Applications/Microsoft Edge.app"
+            },
+            EngineType.Brave => new[]
+            {
+                "/Applications/Brave Browser.app"
+            },
             _ => Array.Empty<string>()
         };
 
@@ -54,6 +62,16 @@ public class MacosBrowserPlatformAdapter : IBrowserPlatformAdapter
             {
                 "/usr/local/bin/firefox",
                 "/opt/homebrew/bin/firefox"
+            },
+            EngineType.Edge => new[]
+            {
+                "/usr/local/bin/microsoft-edge",
+                "/opt/homebrew/bin/microsoft-edge"
+            },
+            EngineType.Brave => new[]
+            {
+                "/usr/local/bin/brave-browser",
+                "/opt/homebrew/bin/brave-browser"
             },
             _ => Array.Empty<string>()
         };
