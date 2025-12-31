@@ -28,6 +28,12 @@ public class WindowsBrowserPlatformAdapter : IBrowserPlatformAdapter
             EngineType.Firefox => programFiles.Select(p =>
                 Path.Combine(p, "Mozilla Firefox", "firefox.exe")),
 
+            EngineType.Brave => programFiles.Select(p =>
+                Path.Combine(p, "BraveSoftware", "Brave-Browser", "Application", "brave.exe")),
+
+            EngineType.Edge => programFiles.Select(p =>
+                Path.Combine(p, "Microsoft", "Edge", "Application", "msedge.exe")),
+
             _ => Enumerable.Empty<string>()
         };
 
