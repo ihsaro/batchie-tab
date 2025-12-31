@@ -33,6 +33,13 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
                 "brave-browser",
                 "brave"
             },
+            EngineType.Edge => new[]
+            {
+                "microsoft-edge",
+                "microsoft-edge-stable",
+                "microsoft-edge-beta",
+                "microsoft-edge-dev"
+            },
             _ => Array.Empty<string>()
         };
 
@@ -48,6 +55,7 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
             EngineType.Chromium => new[] { "chromium" },
             EngineType.Firefox => new[] { "firefox" },
             EngineType.Brave => new[] { "brave" },
+            EngineType.Edge => new[] { "microsoft-edge" },
             _ => Array.Empty<string>()
         };
 
@@ -63,6 +71,7 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
             EngineType.Chromium => new[] { "org.chromium.Chromium" },
             EngineType.Firefox => new[] { "org.mozilla.firefox" },
             EngineType.Brave => new[] { "com.brave.Browser" },
+            EngineType.Edge => new[] { "com.microsoft.Edge" },
             _ => Array.Empty<string>()
         };
 
