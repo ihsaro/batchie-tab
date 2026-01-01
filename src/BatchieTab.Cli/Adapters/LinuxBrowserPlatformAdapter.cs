@@ -51,11 +51,9 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
 
         var snapNames = browser switch
         {
-            EngineType.Chrome => new[] { "google-chrome" },
             EngineType.Chromium => new[] { "chromium" },
             EngineType.Firefox => new[] { "firefox" },
             EngineType.Brave => new[] { "brave" },
-            EngineType.Edge => new[] { "microsoft-edge" },
             _ => Array.Empty<string>()
         };
 
