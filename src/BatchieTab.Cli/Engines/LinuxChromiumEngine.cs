@@ -18,12 +18,41 @@ public class LinuxChromiumEngine : IEngine
 
     private static void StartProcess(string args)
     {
+        var command =
+            CommandExists("chromium-browser") ? $"chromium-browser {args}" :
+            CommandExists("chromium") ? $"chromium {args}" :
+            CommandExists("flatpak") ? $"flatpak run org.chromium.Chromium {args}" :
+            throw new InvalidOperationException("Chromium browser not found");
+
         Process.Start(new ProcessStartInfo
         {
             FileName = "bash",
-            Arguments = $"-c \"chromium-browser {args} >/dev/null 2>&1 &\"",
+            Arguments = $"-c \"{command} >/dev/null 2>&1 &\"",
             UseShellExecute = false,
             CreateNoWindow = true
         });
+    }
+    
+    private static bool CommandExists(string command)
+    {
+        try
+        {
+            var process = Process.Start(new ProcessStartInfo
+            {
+                FileName = "bash",
+                Arguments = $"-c \"command -v {command}\"",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            });
+
+            process!.WaitForExit();
+            return process.ExitCode == 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
