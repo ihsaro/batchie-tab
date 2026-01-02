@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using BatchieTab.Cli.Helpers;
 
 namespace BatchieTab.Cli.Engines;
 
@@ -19,9 +20,9 @@ public class LinuxBraveEngine : IEngine
     private static void StartProcess(string args)
     {
         var command =
-            CommandExists("brave-browser") ? $"brave-browser {args}" :
-            CommandExists("brave") ? $"brave {args}" :
-            CommandExists("flatpak") ? $"flatpak run com.brave.Browser {args}" :
+            PlatformHelper.CommandExists("brave-browser") ? $"brave-browser {args}" :
+            PlatformHelper.CommandExists("brave") ? $"brave {args}" :
+            PlatformHelper.CommandExists("flatpak") ? $"flatpak run com.brave.Browser {args}" :
             throw new InvalidOperationException("Brave browser not found");
 
         Process.Start(new ProcessStartInfo
@@ -31,28 +32,5 @@ public class LinuxBraveEngine : IEngine
             UseShellExecute = false,
             CreateNoWindow = true
         });
-    }
-    
-    private static bool CommandExists(string command)
-    {
-        try
-        {
-            var process = Process.Start(new ProcessStartInfo
-            {
-                FileName = "bash",
-                Arguments = $"-c \"command -v {command}\"",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            });
-
-            process!.WaitForExit();
-            return process.ExitCode == 0;
-        }
-        catch
-        {
-            return false;
-        }
     }
 }

@@ -2,7 +2,7 @@ using BatchieTab.Cli.Domain;
 
 namespace BatchieTab.Cli.Adapters;
 
-public class WindowsBrowserPlatformAdapter : IBrowserPlatformAdapter
+public class WindowsPlatformAdapter : IPlatformAdapter
 {
     public string? GetDefaultBrowser()
     {
@@ -38,5 +38,10 @@ public class WindowsBrowserPlatformAdapter : IBrowserPlatformAdapter
         };
 
         return paths.Any(File.Exists);
+    }
+
+    public bool CommandExists(string command)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -3,7 +3,7 @@ using BatchieTab.Cli.Domain;
 
 namespace BatchieTab.Cli.Adapters;
 
-public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
+public class LinuxPlatformAdapter : IPlatformAdapter
 {
     public string? GetDefaultBrowser()
     {
@@ -80,6 +80,29 @@ public class LinuxBrowserPlatformAdapter : IBrowserPlatformAdapter
         }
 
         return false;
+    }
+
+    public bool CommandExists(string command)
+    {
+        try
+        {
+            var process = Process.Start(new ProcessStartInfo
+            {
+                FileName = "bash",
+                Arguments = $"-c \"command -v {command}\"",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            });
+
+            process!.WaitForExit();
+            return process.ExitCode == 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private static bool RunCommand(string fileName, string arguments)

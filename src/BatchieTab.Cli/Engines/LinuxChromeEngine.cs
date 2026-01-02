@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using BatchieTab.Cli.Helpers;
 
 namespace BatchieTab.Cli.Engines;
 
@@ -19,8 +20,8 @@ public class LinuxChromeEngine : IEngine
     private static void StartProcess(string args)
     {
         var command =
-            CommandExists("google-chrome") ? $"google-chrome {args}" :
-            CommandExists("flatpak") ? $"flatpak run com.google.Chrome {args}" :
+            PlatformHelper.CommandExists("google-chrome") ? $"google-chrome {args}" :
+            PlatformHelper.CommandExists("flatpak") ? $"flatpak run com.google.Chrome {args}" :
             throw new InvalidOperationException("Google chrome browser not found");
 
         Process.Start(new ProcessStartInfo
@@ -30,28 +31,5 @@ public class LinuxChromeEngine : IEngine
             UseShellExecute = false,
             CreateNoWindow = true
         });
-    }
-    
-    private static bool CommandExists(string command)
-    {
-        try
-        {
-            var process = Process.Start(new ProcessStartInfo
-            {
-                FileName = "bash",
-                Arguments = $"-c \"command -v {command}\"",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            });
-
-            process!.WaitForExit();
-            return process.ExitCode == 0;
-        }
-        catch
-        {
-            return false;
-        }
     }
 }

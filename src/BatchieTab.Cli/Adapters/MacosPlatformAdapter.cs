@@ -2,7 +2,7 @@ using BatchieTab.Cli.Domain;
 
 namespace BatchieTab.Cli.Adapters;
 
-public class MacosBrowserPlatformAdapter : IBrowserPlatformAdapter
+public class MacosPlatformAdapter : IPlatformAdapter
 {
     public string? GetDefaultBrowser()
     {
@@ -83,5 +83,10 @@ public class MacosBrowserPlatformAdapter : IBrowserPlatformAdapter
         }
 
         return false;
+    }
+
+    public bool CommandExists(string command)
+    {
+        throw new NotImplementedException();
     }
 }

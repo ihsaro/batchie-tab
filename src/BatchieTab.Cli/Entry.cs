@@ -17,7 +17,7 @@ public class Entry(IServiceProvider serviceProvider)
         
         List<string> urls = [];
 
-        var os = OperatingSystemHelper.GetOperatingSystem();
+        var os = PlatformHelper.GetOperatingSystem();
 
         if (args.Length > 0)
         {
@@ -44,7 +44,7 @@ public class Entry(IServiceProvider serviceProvider)
                         Console.WriteLine($"Invalid {BrowserArgumentName} value, possible values are: {string.Join(", ", EngineType.All)}.");
                         return;
                     }
-                    if (!EngineHelper.IsBrowserInstalled(browser))
+                    if (!PlatformHelper.IsBrowserInstalled(browser))
                     {
                         Console.WriteLine("Specified browser is not installed");
                         return;
@@ -53,7 +53,7 @@ public class Entry(IServiceProvider serviceProvider)
             }
             else
             {
-                var defaultBrowser = EngineHelper.GetDefaultBrowser();
+                var defaultBrowser = PlatformHelper.GetDefaultBrowser();
 
                 if (defaultBrowser is null)
                 {
