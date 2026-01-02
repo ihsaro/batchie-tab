@@ -26,11 +26,40 @@ public class LinuxFirefoxEngine : IEngine
 
     private static void StartProcess(string args)
     {
+        var command =
+            CommandExists("firefox") ? $"firefox {args}" :
+            CommandExists("flatpak") ? $"flatpak run org.mozilla.firefox {args}" :
+            throw new InvalidOperationException("Firefox browser not found");
+
         Process.Start(new ProcessStartInfo
         {
-            FileName = "firefox",
-            Arguments = args,
-            UseShellExecute = true
+            FileName = "bash",
+            Arguments = $"-c \"{command} >/dev/null 2>&1 &\"",
+            UseShellExecute = false,
+            CreateNoWindow = true
         });
+    }
+    
+    private static bool CommandExists(string command)
+    {
+        try
+        {
+            var process = Process.Start(new ProcessStartInfo
+            {
+                FileName = "bash",
+                Arguments = $"-c \"command -v {command}\"",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            });
+
+            process!.WaitForExit();
+            return process.ExitCode == 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
