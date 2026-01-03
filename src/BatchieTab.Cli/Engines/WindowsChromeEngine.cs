@@ -20,10 +20,9 @@ public class WindowsChromeEngine : IEngine
     {
         Process.Start(new ProcessStartInfo
         {
-            FileName = "cmd",
-            Arguments = $"/c start chrome {chromeArgs}",
-            UseShellExecute = true,
-            CreateNoWindow = true
+            FileName = @"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            Arguments = chromeArgs,
+            UseShellExecute = false
         });
     }
 }
