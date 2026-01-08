@@ -11,6 +11,13 @@ BatchieTab is a cross-platform CLI tool that opens multiple URLs in your browser
 - Works on windows, mac, and linux.
 - Fast, lightweight CLI, compiled to Native AOT.
 
+### Arguments
+
+--help  
+--path <path-to-file>  
+--browser <browser-name> (possible values : chrome, chromium, firefox, safari, edge, brave)  
+--incognito
+
 ### Instructions
 
 #### Basic mode
@@ -33,9 +40,9 @@ If you do that, you should see the list of tabs open up in a new browser instanc
 3. Insert a list of urls, separated by a newline in that file.
 4. Execute the script using the following :
 
-- For windows : ./batchie-tab-win-x64.exe --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>
-- For linux : ./batchie-tab-linux-x64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>
-- For macos : ./batchie-tab-osx-arm64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>
+- For windows : ./batchie-tab-win-x64.exe --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path to your urls file>
+- For linux : ./batchie-tab-linux-x64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path to your urls file>
+- For macos : ./batchie-tab-osx-arm64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path to your urls file>
 
 If you do that, you should see the list of tabs open up in a new incognito browser instance of the browser that you specified. This full command demonstrates the complete ability of the script.
 
@@ -52,19 +59,12 @@ https://www.gmail.com
 https://www.facebook.com  
 https://www.youtube.com
 
-### Arguments
-
---help  
---path <path-to-file>  
---browser <browser-name> (possible values : chrome, chromium, firefox, safari, edge, brave)  
---incognito  
-
 ### Usage examples
 
 ./batchie-tab  
 ./batchie-tab --incognito  
-./batchie-tab --path <path-to-file> --incognito  
-./batchie-tab --path <path-to-file> --browser chrome --incognito  
+./batchie-tab --path <path to file> --incognito  
+./batchie-tab --path <path to file> --browser chrome --incognito  
 
 ### Implementation status
 
