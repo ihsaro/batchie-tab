@@ -47,9 +47,9 @@ All parameters are optional, meaning:
 
 **A last, but very important note : DO NOT use any file that someone sends you without inspecting the content first, I have yet to assess the security aspect of this script. I do not take any responsibility in case of system hacking / corruption due to unsafe files containing malicious content. A normal url file would be as follows:**
 
-https://www.google.com
-https://www.gmail.com
-https://www.facebook.com
+https://www.google.com  
+https://www.gmail.com  
+https://www.facebook.com  
 https://www.youtube.com
 
 ### Arguments
