@@ -13,10 +13,10 @@ BatchieTab is a cross-platform CLI tool that opens multiple URLs in your browser
 
 ### Arguments
 
---help  
---path <path to file>  
---browser <browser name> (possible values : chrome, chromium, firefox, safari, edge, brave)  
---incognito
+`--help`  
+`--path <path-to-file>`  
+`--browser <browser-name> (possible values : chrome, chromium, firefox, safari, edge, brave)`  
+`--incognito`
 
 ### Instructions
 
@@ -27,9 +27,9 @@ BatchieTab is a cross-platform CLI tool that opens multiple URLs in your browser
 3. Insert a list of urls, separated by a newline in that file.  
 4. Execute the script using the following :  
 
-- For windows : batchie-tab-win-x64.exe  
-- For linux : ./batchie-tab-linux-x64  
-- For macos : ./batchie-tab-osx-arm64  
+- For windows : `./batchie-tab-win-x64.exe`  
+- For linux : `./batchie-tab-linux-x64`  
+- For macos : `./batchie-tab-osx-arm64`  
 
 If you do that, you should see the list of tabs open up in a new browser instance of your default browser.
 
@@ -40,9 +40,9 @@ If you do that, you should see the list of tabs open up in a new browser instanc
 3. Insert a list of urls, separated by a newline in that file.
 4. Execute the script using the following :
 
-- For windows : ./batchie-tab-win-x64.exe --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path to your urls file>
-- For linux : ./batchie-tab-linux-x64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path to your urls file>
-- For macos : ./batchie-tab-osx-arm64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path to your urls file>
+- For windows : `./batchie-tab-win-x64.exe --browser <browser-of-your-choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>`
+- For linux : `./batchie-tab-linux-x64 --browser <browser-of-your-choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>`
+- For macos : `./batchie-tab-osx-arm64 --browser <browser-of-your-choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>`
 
 If you do that, you should see the list of tabs open up in a new incognito browser instance of the browser that you specified. This full command demonstrates the complete ability of the script.
 
@@ -61,10 +61,10 @@ https://www.youtube.com
 
 ### Usage examples
 
-./batchie-tab  
-./batchie-tab --incognito  
-./batchie-tab --path <path to file> --incognito  
-./batchie-tab --path <path to file> --browser chrome --incognito  
+`./batchie-tab-linux-x64`  
+`./batchie-tab-linux-x64 --incognito`  
+`./batchie-tab-linux-x64 --path <path-to-file> --incognito`  
+`./batchie-tab-linux-x64 --path <path-to-file> --browser chrome --incognito`  
 
 ### Implementation status
 
