@@ -33,7 +33,7 @@ If you do that, you should see the list of tabs open up in a new browser instanc
 3. Insert a list of urls, separated by a newline in that file.
 4. Execute the script using the following :
 
-- For windows : ./batchie-tab-win-x64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>
+- For windows : ./batchie-tab-win-x64.exe --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>
 - For linux : ./batchie-tab-linux-x64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>
 - For macos : ./batchie-tab-osx-arm64 --browser <browser of your choice : accepted values are chrome, firefox, edge, safari, brave, chromium> --incognito --path <path-to-your-urls-file>
 
