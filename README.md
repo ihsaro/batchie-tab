@@ -14,8 +14,8 @@ BatchieTab is a cross-platform CLI tool that opens multiple URLs in your browser
 ### Arguments
 
 --help  
---path <path-to-file>  
---browser <browser-name> (possible values : chrome, chromium, firefox, safari, edge, brave)  
+--path <path to file>  
+--browser <browser name> (possible values : chrome, chromium, firefox, safari, edge, brave)  
 --incognito
 
 ### Instructions
