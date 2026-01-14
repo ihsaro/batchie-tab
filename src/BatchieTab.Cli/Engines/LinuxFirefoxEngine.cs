@@ -3,25 +3,36 @@ using BatchieTab.Cli.Helpers;
 
 namespace BatchieTab.Cli.Engines;
 
-/*
- * TODO
- * Fix issue in Open, whereby it opens in 2 windows: n - 1 urls in a window and 1 url in another window.
- * Fix issue is OpenIncognito, where it opens n - 1 urls but 1 random url is not opened, but instead is opened in a new tab in the same incognito window. 
- */
 public class LinuxFirefoxEngine : IEngine
 {
     public void Open(IEnumerable<string> urls)
     {
-        var args = "--new-window " + string.Join(" ", urls.Select(u => $"\"{u}\""));
+        var urlList = urls.ToList();
+        if (urlList.Count == 0) return;
+
+        // Firefox's --new-window only accepts one URL, so we use -new-tab for the rest
+        var args = $"--new-window \"{urlList[0]}\"";
+        if (urlList.Count > 1)
+        {
+            args += " " + string.Join(" ", urlList.Skip(1).Select(u => $"-new-tab \"{u}\""));
+        }
 
         StartProcess(args);
     }
 
     public void OpenIncognito(IEnumerable<string> urls)
     {
-        foreach (var url in urls)
+        var urlList = urls.ToList();
+        if (urlList.Count == 0) return;
+
+        // Launch first URL to create the private window
+        StartProcess($"-private-window \"{urlList[0]}\"");
+
+        // Launch remaining URLs with a delay - Firefox will add them as tabs to the existing private window
+        foreach (var url in urlList.Skip(1))
         {
-            StartProcess($"--no-remote -private-window \"{url}\"");
+            Thread.Sleep(700);
+            StartProcess($"-private-window \"{url}\"");
         }
     }
 
